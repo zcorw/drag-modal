@@ -1,0 +1,14 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "ie": "9"
+        },
+        "useBuiltIns": "usage",
+        "corejs": "3" // 可选，用于 polyfill
+      }
+    ]
+  ]
+}

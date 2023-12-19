@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      background-color: antiquewhite;
+    }
+    .modal-box {
+      position: fixed;
+      width: 80%;
+      height: 80%;
+      background-color: #fff;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0px 12px 24px 0px rgba(0,0,0,0.22);
+    }
+    .modal-header {
+      position: relative;
+      padding: 15px 15px 10px;
+      height: 16px;
+      cursor: move;
+    }
+    .modal-headerbtn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      padding: 0;
+      border: none;
+      outline: none;
+      background: transparent;
+      font-size: 16px;
+      cursor: pointer;
+      width: 16px;
+      height: 16px;
+    }
+    .modal-headerbtn-close {
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAJRJREFUOE+l08ENgCAMBdD2YuIILAhX3aAjGG8wqonBcChRoG0MXMl/LRQQJhdO5qEC3vucUjLBEMLtnFuJ6CrFPwELKWEAOGOMO3feVZSQUbjrgNUWkcIiUDYY0cIqwAgiHu8zt1MTb50r55w3bTpDoG1bm04HSGeWkA9gXdgIqYAVlkZcASJa+Hn++R/m27ewaeABtKdiERIItmEAAAAASUVORK5CYII=');
+    }
+    .modal-headerbtn-full {
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAFFJREFUOE9jZKAQMFKonwFuQFpa2n+YYbNmzcIwGJc8hgHYNMMMhhmCrAbFAJAESBEuF2CTp14YkBuYw8kFsNAnOxawxTF6wBJMBxSlxKEbjQBkHkARurbbUQAAAABJRU5ErkJggg==');
+      right: 50px;
+    }
+    .modal-headerbtn-min {
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAADFJREFUOE9jZKAQMFKon2HUAIbBEgZpaWmvGRgYREiM0mOzZs2yHo3GQRONJEYfinIAkp8FEfleqPEAAAAASUVORK5CYII=');
+      right: 95px;
+    }
+    .modal-body {
+      flex: 1;
+    }
+    .modal-body iframe {
+      width: 100%;
+      height: 100%;
+    }
+    [class^="modal-border-"],
+    [class^="modal-corner-"] {
+      position: absolute;
+    }
+    [class^="modal-corner-"] {
+      width: 5px;
+      height: 5px;
+    }
+    .modal-border-bottom,
+    .modal-border-top {
+      left: 5px;
+      width: calc(100% - 10px);
+      cursor: n-resize;
+    }
+    .modal-border-left,
+    .modal-border-right {
+      top: 5px;
+      height: calc(100% - 10px);
+      cursor: w-resize;
+    }
+    .modal-border-bottom,
+    .modal-corner-bottom {
+      bottom: 0;
+    }
+    .modal-border-top,
+    .modal-corner-top {
+      top: 0;
+    }
+    .modal-border-left,
+    .modal-corner-left {
+      left: 0;
+    }
+    .modal-border-right,
+    .modal-corner-right {
+      right: 0;
+    }
+    .modal-border-bottom,
+    .modal-border-top {
+      height: 5px;
+    }
+    .modal-border-left,
+    .modal-border-right {
+      width: 5px;
+    }
+    .modal-corner-left.modal-corner-top,
+    .modal-corner-right.modal-corner-bottom {
+      cursor: nw-resize;
+    }
+    .modal-corner-left.modal-corner-bottom,
+    .modal-corner-right.modal-corner-top {
+      cursor: ne-resize;
+    }
+  </style>
+</head>
+<body>
+  <div id="modal" class="modal-box">
+    <div class="modal-header" drag-move>
+      <button type="button" class="modal-headerbtn modal-headerbtn-close"></button>
+      <button type="button" class="modal-headerbtn modal-headerbtn-full"></button>
+      <button type="button" class="modal-headerbtn modal-headerbtn-min"></button>
+    </div>
+    <div class="modal-body"></div>
+    <div class="modal-border-right" drag-resize-right></div>
+    <div class="modal-border-top" drag-resize-top></div>
+    <div class="modal-border-left" drag-resize-left></div>
+    <div class="modal-border-bottom" drag-resize-bottom></div>
+    <div class="modal-corner-top modal-corner-right" drag-resize-top drag-resize-right></div>
+    <div class="modal-corner-top modal-corner-left" drag-resize-top drag-resize-left></div>
+    <div class="modal-corner-bottom modal-corner-left" drag-resize-bottom drag-resize-left></div>
+    <div class="modal-corner-bottom modal-corner-right" drag-resize-bottom drag-resize-right></div>
+  </div>
+  <script src="./dist/dragModal.umd.js"></script>
+  <script>
+    window.dragModal.default(document.getElementById("modal"));
+  </script>
+</body>
+</html>
